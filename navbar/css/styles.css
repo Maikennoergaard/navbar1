@@ -1,0 +1,175 @@
+/* css reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    min-height: 100vh; /*Indsat for at tjekke om siden scroller*/
+    
+}
+
+main{
+    min-height: 200vh; /*Indsat for at tjekke om siden scroller*/
+    border: 2px solid black; /*Sort kant rundt om hele main*/
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s, visibility .35s, height .35s;
+    overflow: hidden;
+    background: black;
+    z-index: -1;
+}
+
+/* Styling af logo */
+.logo-container{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    margin-left: 2%;
+    top: 0;
+    z-index: 1001;
+}
+
+img{
+    width: 100px;
+}
+
+/* Styling af mainnav */
+header{
+  display: flex;
+  align-items: center;  
+  position: sticky; /*Gør navigationsbaren følger siden*/
+  top: 0px;
+  width: 100%;
+  z-index: 1000;
+}
+
+#main-menu {
+    display: flex;
+    height: 100px; /*Højden af navigationsbare*/
+    width: 100%;
+    margin: 0px;  
+    z-index: 9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: top 0.3s;
+  }
+  
+  #main-menu ul {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    z-index: 9;
+  }
+  #main-menu li {
+    list-style-type: none;
+    font-size: 2rem;
+  }
+  
+  #main-menu a {
+    color: #B9FAF8; /*farven på skrift*/
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  #main-menu a:hover {
+    text-decoration: underline; /*Hover i almindelig navbar*/
+  }
+  
+  #hamburger-input{
+    display: none;
+  }
+  
+/* Styling af navbar */
+#hamburger-menu {
+    position: fixed;
+    top: 5%;
+    right: 20px;
+    width: 40px; /*burgermenu ikon størelse*/
+    height: 40px; /*burgermenu ikon størelse*/
+    display: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: linear-gradient(
+    to bottom, 
+    #3D0E61, #3D0E61 20%, 
+    rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0) 40%, /*gennemsigtig farve*/
+    #3D0E61 40%, #3D0E61 60%, 
+    rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 80%, 
+    #3D0E61 80%, #3D0E61 100%
+    );
+}
+
+#hamburger-menu #sidebar-menu {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 40%; /*Hvor meget burgermenuen fylder i udslået version*/
+    height: 100%;
+    background-color: #B9F; /*Burgermenu baggrundsfarve*/
+    transition: 0.7s; 
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+#hamburger-menu ul {
+    padding-left: 0px;
+  }
+  
+#hamburger-menu li {
+    list-style-type: none;
+    line-height: 3rem;
+}
+
+/* Skrift i hamburgermenu */
+#hamburger-menu a {
+    color: #3D0E61; /*Skrift farve i burgermenu*/
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+#hamburger-menu a:hover {
+    text-decoration: underline;
+}
+
+#hamburger-input:checked + #hamburger-menu #sidebar-menu {
+    visibility: visible;
+    right: 0;
+}
+  
+/* Gør den resterende skærm har et gennemsigtigt lag over */
+#hamburger-input:checked ~ .overlay{
+    visibility: visible;
+    opacity: 0.4;
+}
+
+
+@media screen and (max-width: 750px) {
+  #main-menu {
+    display: none;
+  }
+  #hamburger-menu {
+    display: inline;
+  }
+}
+
